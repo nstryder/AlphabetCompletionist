@@ -1,0 +1,34 @@
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+    justify-content: center;
+    text-align: center;
+    align-items: center
+}
+
+.limit-width {
+    width: 100%;
+    max-width: 480px;
+}
+
+.highlight {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.grey {
+    color: lightgray
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.text-left {
+    text-align: left;
+}
+

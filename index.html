@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Alphabet Completionist</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div class="flex center" x-data="{
+        message: '',
+        showLetters() {
+            return [...'ABCDEFGHIJKLMNOPQRSTUVQXYZ'].filter(c =&gt; this.message.toUpperCase().includes(c)).join('');
+        },
+        getLetterCount() {
+            return this.showLetters().length;
+        },
+        getMissingLetters() {
+            return [...'ABCDEFGHIJKLMNOPQRSTUVQXYZ'].filter(c =&gt; !this.message.toUpperCase().includes(c)).join('');
+        },
+        isLetterInText(letter) {
+            return this.message.toUpperCase().includes(letter);
+        }
+    }">
+        <h1>Alphabet Completionist</h1>
+        <h3>Enter text to see which letters you've used</h3>
+        <textarea id="text" rows="10" class="limit-width" x-model="message"></textarea>
+        <div class="grid text-left">
+            <p>Letters used:</p><p x-text="showLetters()"></p>
+            <p>Missing Letters:</p><p x-text="getMissingLetters()"></p>
+            <p>
+                Letter tracker (<span x-text="getLetterCount()"></span>/26): 
+            </p>
+            <p>
+                <template x-for="c in 'ABCDEFGHIJKLMNOPQRSTUVQXYZ'">
+                    <span x-text="c" :class="!isLetterInText(c) ? 'grey' : 'highlight'"></span>
+                </template>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
